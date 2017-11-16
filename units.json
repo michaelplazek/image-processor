@@ -1,0 +1,158 @@
+{
+  "houses": [{
+    "path":"/building",
+    "number":"442",
+    "street":"Orchard Ave",
+    "city": "Bellevue, PA",
+    "zip":"15202",
+    "bg":"http://i.imgur.com/f2ka63o.jpg",
+    "marker":{
+      "position": {
+        "lat": "40.4985596",
+        "lng": "-80.053859"
+      },
+      "key": "442 Orchard Ave",
+      "defaultAnimation": "2"
+    },
+    "images": [
+      "http://i.imgur.com/FASNApg.jpg",
+      "http://jeffmatherphotography.com/dispatches_wp/wp-content/uploads/2012/06/IMG_3960.jpg"
+    ],
+    "units":[{
+      "title":"First Floor",
+      "images":[
+        "http://www.reallynicehouses.com/wp-content/uploads/IMG_1397.jpg",
+        "http://jeffmatherphotography.com/dispatches_wp/wp-content/uploads/2012/06/IMG_3960.jpg"
+      ],
+      "beds":"2",
+      "baths":"1",
+      "description":"First floor, 2-bedroom apartment in a desirable location in Bellevue. Huge living room with decorative fireplace. Updated bathroom with stained-glass window. Large master bedroom with plenty of closet space. Large, eat-in kitchen with range, refrigerator and dishwasher and plenty of cabinet space. Custom blinds throughout. Central A/C. Huge back porch and yard. Off-street parking in back. Equipped laundry and clean storage in basement. Washer and dryer provided for tenants’ use. Additional room in basement which can be used for office, etc.",
+      "washer":"yes",
+      "dishwasher":"yes",
+      "path":"/"
+    },
+    {
+      "title":"Second Floor",
+      "images":[
+        "http://www.reallynicehouses.com/wp-content/uploads/IMG_1397.jpg",
+        "http://jeffmatherphotography.com/dispatches_wp/wp-content/uploads/2012/06/IMG_3960.jpg"
+      ],
+      "beds":"2",
+      "baths":"1",
+      "description":"Triplex building. Beautiful, large 2nd floor, 2 bedroom apartment in a convenient location in Bellevue. Large living room with built-in bookcases and decorative fireplace. Large, equipped kitchen with center island and plenty of cabinet space. Dishwasher, stove and refrigerator included. Beautiful master bedroom with decorative fireplace and built-in bookcase and stained-glass window. Equipped laundry in basement with plenty of storage space too. Washer and dryer are provided and are NOT coin-operated. Central A/C. Large back balcony and yard. Old world charm abounds in this apartment!",
+      "washer":"yes",
+      "dishwasher":"yes",
+      "path":"/"
+    },
+    {
+      "title":"Third Floor",
+      "images":[
+        "http://www.reallynicehouses.com/wp-content/uploads/IMG_1397.jpg",
+        "http://jeffmatherphotography.com/dispatches_wp/wp-content/uploads/2012/06/IMG_3960.jpg"
+      ],
+      "beds":"2",
+      "baths":"1",
+      "description":"Triplex building. Spacious, two bedroom, 3rd floor apartment. Large entry. Living room. Bathroom (shower only). Built-ins. Lots of storage space. Kitchen with newer appliances. Separate utilities (all electric apartment). Large front balcony. Equipped laundry room IN APARTMENT. Central air conditioning. Yard. Private back deck. Off-street parking in back.",
+      "washer":"yes",
+      "dishwasher":"yes",
+      "path":"/"
+    }],
+    "price":"3",
+    "feel":"Comfortable triplex located on a quiet street in Bellevue. Large backyard. Front/back porches. Both on and off street parking. Smoke free. Large basement with washer & dryer.",
+    "facts":{
+      "type":"triplex",
+      "pets":"yes",
+      "parking":"off-street",
+      "heat":"central",
+      "ac":"central",
+      "washer":"yes"
+    }
+  },
+    {
+      "path":"/",
+      "number":"181",
+      "street":"Grant Ave",
+      "city": "Bellevue, PA",
+      "zip":"15202",
+      "bg":"http://i.imgur.com/f2ka63o.jpg",
+      "marker":{
+        "position": {
+          "lat": "40.4882993",
+          "lng": "-80.0550194"
+        },
+        "key": "181 Grant Ave",
+        "defaultAnimation": "2"
+      },
+      "images": [
+        "http://i.imgur.com/dTPlPXq.jpg",
+        "http://jeffmatherphotography.com/dispatches_wp/wp-content/uploads/2012/06/IMG_3960.jpg"
+      ],
+      "price":"4",
+      "feel":"Beautiful duplex located on a quiet street in Bellevue. Large backyard, front porch porches. Both on and off street parking. Smoke free. Equipped with washer & dryer.",
+      "facts":{
+        "type":"duplex",
+        "pets":"yes",
+        "parking":"off-street",
+        "heat":"central",
+        "ac":"central",
+        "washer":"yes",
+        "dryer":"yes"
+      }
+    },
+    {
+      "path":"/",
+      "number":"65/67",
+      "street":"North Bryant Ave",
+      "city": "Bellevue, PA",
+      "zip":"15202",
+      "bg":"http://i.imgur.com/f2ka63o.jpg",
+      "marker":{
+        "position": {
+          "lat": "40.4943579",
+          "lng": "-80.0512726"
+        },
+        "key": "65 North Bryant Ave",
+        "defaultAnimation": "2"
+      },
+      "images": [
+        "http://i.imgur.com/yXUE7c3.jpg",
+        "http://jeffmatherphotography.com/dispatches_wp/wp-content/uploads/2012/06/IMG_3960.jpg"
+      ],
+      "units":[{
+        "title":"First Floor",
+        "images":[
+          "http://www.reallynicehouses.com/wp-content/uploads/IMG_1397.jpg",
+          "http://jeffmatherphotography.com/dispatches_wp/wp-content/uploads/2012/06/IMG_3960.jpg"
+        ],
+        "beds":"2",
+        "baths":"1",
+        "description":"Large first floor duplex apartment. Two bedrooms. Living room, dining room, equipped kitchen. One bathroom. Hardwood floors. Equipped laundry in basement. Private back yard. Back porch. Garage. Located on nice one way street in Bellevue.",
+        "washer":"yes",
+        "dishwasher":"yes",
+        "path":"/"
+      },
+        {
+          "title":"Second Floor",
+          "images":[
+            "http://www.reallynicehouses.com/wp-content/uploads/IMG_1397.jpg",
+            "http://jeffmatherphotography.com/dispatches_wp/wp-content/uploads/2012/06/IMG_3960.jpg"
+          ],
+          "beds":"2",
+          "baths":"1",
+          "description":"Second floor, 2-bedroom apartment on a quiet, one-way street in Bellevue. Spacious living room / dining room combination with decorative fireplace and hardwood floors. Both bedrooms have plenty of closet space and carpeted floors. Large, equipped, eat-in kitchen with gas range, refrigerator, and plenty of storage space. Large third-floor room for additional storage. Central A/C. Back deck with private back yard. Garage parking in back. Equipped laundry and clean storage in basement. Washer and dryer provided for tenants’ use.",
+          "washer":"yes",
+          "dishwasher":"yes",
+          "path":"/"
+        }],
+        "price":"2",
+        "feel":"Cozy duplex located in the heart of Bellevue. Washer & dryer in basement. Back porches. Private backyard. Fresh paint job. On street parking easy to find.",
+        "facts":{
+          "type":"duplex",
+          "pets":"yes",
+          "parking":"off-street",
+          "heat":"central",
+          "ac":"central",
+          "washer":"yes"
+      }
+    }]
+}
