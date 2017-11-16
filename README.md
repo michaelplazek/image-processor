@@ -1,3 +1,3 @@
-## Plazek Properties Homepage
+## A simple automated image editor
 
-Under construction.
+Used for rapidly processing large volumes of images
