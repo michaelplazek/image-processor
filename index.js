@@ -5,15 +5,17 @@ const Jimp = require("jimp");
 const async = require("async");
 const sync = require("sync");
 
+// ie. node index.js <directory path>
 let dir = process.argv[2];
 let buf = [];
-let imageBuffer = [];
 let file;
 
-readDirectory(dir);
-transformImage(imageBuffer);
+readDirectory(dir, buf, dir);
 
-function readDirectory(path) {
+function readDirectory(path, buf, folder) {
+
+  // reset image buffer
+  let imageBuffer = [];
 
   // read the directory
   buf = fs.readdirSync(path);
@@ -24,14 +26,18 @@ function readDirectory(path) {
     // check whether item is a file or nested directory
     file = fs.statSync(path + "/" + item);
     console.log('inside stat: ' + path + "/" + item);
-    if(file.isDirectory()) readDirectory(item); // recurse on directory
-    else if(file.isFile()) checkType(item); // initialize image transform
+    if(file.isDirectory()){
+      readDirectory(path + "/" + item, buf, item); // recurse on directory
+    }
+    else if(file.isFile()) checkType(path + "/" + item, imageBuffer); // initialize image transform
     });
+
+  transformImage(imageBuffer, folder);
 };
 
-function checkType(file){
+function checkType(file, imageBuffer){
   console.log('Checking...');
-  let buffer = readChunk.sync(dir + '/' + file, 0, 4100);
+  let buffer = readChunk.sync(file, 0, 4100);
   let type = fileType(buffer);
 
   // if file is an image
@@ -41,17 +47,20 @@ function checkType(file){
   }
 }
 
-function transformImage(imageBuffer){
+function transformImage(imageBuffer, folder){
   let count = 0;
+
+  // newDirectory = fs.mkdirSync('../' + dir);
+  let newDirectory = 'new_' + folder;
 
   imageBuffer.forEach(function(item){
 
-    Jimp.read(dir + "/" + item.file)
+    Jimp.read(item.file)
       .then(function (image) {
-        console.log('Jimo Reading...  ' + dir + "/" + item.file);
+        console.log('Jimo Reading...  ' + item.file);
         image.quality(75)
           .resize(768,512)
-          .write(count++ + "." + item.ext);
+          .write(newDirectory + "/" +count++ + "." + item.ext);
 
       }).catch(function (err) {
       throw err;
