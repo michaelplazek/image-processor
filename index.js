@@ -8,14 +8,19 @@ const sync = require("sync");
 // ie. node index.js <directory path>
 let dir = process.argv[2];
 let buf = [];
+let imageBuffer = [];
 let file;
 
-readDirectory(dir, buf, dir);
+// search fs for matches
+file = fs.statSync(dir);
+console.log("Reading files...".bold);
+if(file.isDirectory()) readDirectory(dir, buf, dir);
+else checkType(dir, imageBuffer);
 
 function readDirectory(path, buf, folder) {
 
   // reset image buffer
-  let imageBuffer = [];
+  imageBuffer = new Array();
 
   // read the directory
   buf = fs.readdirSync(path);
@@ -23,14 +28,11 @@ function readDirectory(path, buf, folder) {
   // check each item
   buf.forEach(function (item) {
 
-    // check whether item is a file or nested directory
     file = fs.statSync(path + "/" + item);
-    console.log('inside stat: ' + path + "/" + item);
-    if(file.isDirectory()){
-      readDirectory(path + "/" + item, buf, item); // recurse on directory
-    }
+
+    if(file.isDirectory()) readDirectory(path + "/" + item, buf, item); // recurse on directory
     else if(file.isFile()) checkType(path + "/" + item, imageBuffer); // initialize image transform
-    });
+  });
 
   transformImage(imageBuffer, folder);
 };
@@ -41,10 +43,8 @@ function checkType(file, imageBuffer){
   let type = fileType(buffer);
 
   // if file is an image
-  if(type.ext === 'png' || type.ext === 'jpg'){
-    console.log("type: " + type.ext);
+  if(type && (type.ext === 'png' || type.ext === 'jpg'))
     imageBuffer.push({file, ext:type.ext})
-  }
 }
 
 function transformImage(imageBuffer, folder){
@@ -57,11 +57,17 @@ function transformImage(imageBuffer, folder){
 
     Jimp.read(item.file)
       .then(function (image) {
-        console.log('Jimo Reading...  ' + item.file);
-        image.quality(75)
-          .resize(768,512)
-          .write(newDirectory + "/" +count++ + "." + item.ext);
-
+        console.log('Processing...  ' + item.file);
+        if(image.bitmap.height > image.bitmap.width) {
+          image.quality(75)
+            .resize(512,768)
+            .write(newDirectory + "/" + count++ + "." + item.ext);
+        }
+        else{
+          image.quality(75)
+            .resize(768,512)
+            .write(newDirectory + "/" + count++ + "." + item.ext);
+        }
       }).catch(function (err) {
       throw err;
     })
