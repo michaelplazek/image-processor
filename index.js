@@ -5,15 +5,22 @@ const Jimp = require("jimp");
 const async = require("async");
 const sync = require("sync");
 
+// ie. node index.js <directory path>
 let dir = process.argv[2];
 let buf = [];
 let imageBuffer = [];
 let file;
 
-readDirectory(dir);
-transformImage(imageBuffer);
+// search fs for matches
+file = fs.statSync(dir);
+console.log("Reading files...".bold);
+if(file.isDirectory()) readDirectory(dir, buf, dir);
+else checkType(dir, imageBuffer);
 
-function readDirectory(path) {
+function readDirectory(path, buf, folder) {
+
+  // reset image buffer
+  imageBuffer = new Array();
 
   // read the directory
   buf = fs.readdirSync(path);
@@ -21,38 +28,46 @@ function readDirectory(path) {
   // check each item
   buf.forEach(function (item) {
 
-    // check whether item is a file or nested directory
     file = fs.statSync(path + "/" + item);
-    console.log('inside stat: ' + path + "/" + item);
-    if(file.isDirectory()) readDirectory(item); // recurse on directory
-    else if(file.isFile()) checkType(item); // initialize image transform
-    });
+
+    if(file.isDirectory()) readDirectory(path + "/" + item, buf, item); // recurse on directory
+    else if(file.isFile()) checkType(path + "/" + item, imageBuffer); // initialize image transform
+  });
+
+  transformImage(imageBuffer, folder);
 };
 
-function checkType(file){
+function checkType(file, imageBuffer){
   console.log('Checking...');
-  let buffer = readChunk.sync(dir + '/' + file, 0, 4100);
+  let buffer = readChunk.sync(file, 0, 4100);
   let type = fileType(buffer);
 
   // if file is an image
-  if(type.ext === 'png' || type.ext === 'jpg'){
-    console.log("type: " + type.ext);
+  if(type && (type.ext === 'png' || type.ext === 'jpg'))
     imageBuffer.push({file, ext:type.ext})
-  }
 }
 
-function transformImage(imageBuffer){
+function transformImage(imageBuffer, folder){
   let count = 0;
+
+  // newDirectory = fs.mkdirSync('../' + dir);
+  let newDirectory = 'new_' + folder;
 
   imageBuffer.forEach(function(item){
 
-    Jimp.read(dir + "/" + item.file)
+    Jimp.read(item.file)
       .then(function (image) {
-        console.log('Jimo Reading...  ' + dir + "/" + item.file);
-        image.quality(75)
-          .resize(768,512)
-          .write(count++ + "." + item.ext);
-
+        console.log('Processing...  ' + item.file);
+        if(image.bitmap.height > image.bitmap.width) {
+          image.quality(75)
+            .resize(512,768)
+            .write(newDirectory + "/" + count++ + "." + item.ext);
+        }
+        else{
+          image.quality(75)
+            .resize(768,512)
+            .write(newDirectory + "/" + count++ + "." + item.ext);
+        }
       }).catch(function (err) {
       throw err;
     })
